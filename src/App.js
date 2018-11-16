@@ -31,13 +31,15 @@ class App extends Component {
             <div className="App">
                 <h1>Hi, I'm a React App</h1>
                 <p>This is really working! </p>
-                <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button>
+                {/* method below could be inefficient */}
+                <button onClick={ () => this.switchNameHandler('Maximilian!!')}>Switch Name</button>
                 <Person
                     name={this.state.persons[0].name}
                     age={this.state.persons[0].age} />
                 <Person
                     name={this.state.persons[1].name}
                     age={this.state.persons[1].age}
+                    // method below recommended
                     click={this.switchNameHandler.bind(this, 'Max!')}> My Hobbies: Racing</Person>
                 <Person
                     name={this.state.persons[2].name}
