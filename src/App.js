@@ -10,7 +10,8 @@ class App extends Component {
             { name: 'Manu', age: 29 },
             { name: 'Stephanie', age: 26 }
         ],
-        otherState: 'some other value'
+        otherState: 'some other value',
+        showPersons: false
     };
 
     switchNameHandler = (newName) => {
@@ -36,6 +37,10 @@ class App extends Component {
         });
     }
 
+    togglePersonsHandler = () => {
+        this.setState({showPersons: !this.state.showPersons});
+    }
+
     render() {
         const style = {
             backgroundColor: 'white',
@@ -52,19 +57,24 @@ class App extends Component {
                 {/* method below could be inefficient */}
                 <button
                     style={style}
-                    onClick={() => this.switchNameHandler('Maximilian!!')}>Switch Name</button>
-                <Person
-                    name={this.state.persons[0].name}
-                    age={this.state.persons[0].age} />
-                <Person
-                    name={this.state.persons[1].name}
-                    age={this.state.persons[1].age}
-                    // method below recommended
-                    click={this.switchNameHandler.bind(this, 'Max!')}
-                    changed={this.nameChangedHandler}> My Hobbies: Racing</Person>
-                <Person
-                    name={this.state.persons[2].name}
-                    age={this.state.persons[2].age} />
+                    onClick={this.togglePersonsHandler}>Switch Name</button>
+                {
+                    this.state.showPersons ?
+                        <div>
+                            <Person
+                                name={this.state.persons[0].name}
+                                age={this.state.persons[0].age} />
+                            <Person
+                                name={this.state.persons[1].name}
+                                age={this.state.persons[1].age}
+                                // method below recommended
+                                click={this.switchNameHandler.bind(this, 'Max!')}
+                                changed={this.nameChangedHandler}> My Hobbies: Racing</Person>
+                            <Person
+                                name={this.state.persons[2].name}
+                                age={this.state.persons[2].age} />
+                        </div> : null
+                }
             </div>
         );
         // Equal to below
