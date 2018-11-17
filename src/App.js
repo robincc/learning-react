@@ -38,7 +38,13 @@ class App extends Component {
     }
 
     deletePersonHandler = (personIndex) => {
-        const persons = this.state.persons;
+        // const persons = this.state.persons;
+        // above method returing original reference, which could be modified
+
+        // below two methods, copy original data
+        // const persons = this.state.persons.slice();
+        const persons = [...this.state.persons];
+
         persons.splice(personIndex, 1);
         this.setState({persons: persons});
     }
