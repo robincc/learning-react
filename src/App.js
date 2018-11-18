@@ -60,16 +60,8 @@ class App extends Component {
     }
 
     render() {
-        const style = {
-            backgroundColor: 'lightgreen',
-            color: 'black',
-            font: 'inherit',
-            border: '1px solid blue',
-            padding: '8px',
-            cursor: 'pointer'
-        };
-
         let persons = null;
+        let btnClass = '';
 
         if (this.state.showPersons) {
             persons = (
@@ -84,7 +76,8 @@ class App extends Component {
                     })}
                 </div>
             );
-            style.backgroundColor = 'red';
+
+            btnClass = cssClasses.Red;
         }
 
         const classes = [];
@@ -101,7 +94,7 @@ class App extends Component {
                 <p className={classes.join(' ')}>This is really working! </p>
                 {/* method below could be inefficient */}
                 <button
-                    style={style}
+                    className={btnClass}
                     onClick={this.togglePersonsHandler}>Toggle Person</button>
                 {persons}
             </div>
