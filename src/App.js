@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import './App.css';
+import cssClasses from './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -61,7 +61,8 @@ class App extends Component {
 
     render() {
         const style = {
-            backgroundColor: 'white',
+            backgroundColor: 'lightgreen',
+            color: 'black',
             font: 'inherit',
             border: '1px solid blue',
             padding: '8px',
@@ -83,13 +84,21 @@ class App extends Component {
                     })}
                 </div>
             );
+            style.backgroundColor = 'red';
         }
 
+        const classes = [];
+        if (this.state.persons.length <= 2) {
+            classes.push(cssClasses.red);
+        }
+        if (this.state.persons.length <= 1) {
+            classes.push(cssClasses.bold);
+        }
 
         return (
-            <div className="App">
+            <div className={cssClasses.App}>
                 <h1>Hi, I'm a React App</h1>
-                <p>This is really working! </p>
+                <p className={classes.join(' ')}>This is really working! </p>
                 {/* method below could be inefficient */}
                 <button
                     style={style}
