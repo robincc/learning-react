@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import cssClasses from './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
     state = {
@@ -60,6 +61,12 @@ class App extends Component {
     }
 
     render() {
+        const rnd = Math.random();
+
+        if (rnd > 0.7) {
+            throw new Error('something went wrong with random()');
+        }
+
         let persons = null;
         let btnClass = '';
 
@@ -67,12 +74,13 @@ class App extends Component {
             persons = (
                 <div>
                     {this.state.persons.map((person, index) => {
-                        return <Person
+                        return <ErrorBoundary key={person.id}><Person
                             key={person.id}
                             changed={(event) => this.nameChangedHandler(event, person.id)}
                             click={() => this.deletePersonHandler(index)}
                             name={person.name}
                             age={person.age} />
+                        </ErrorBoundary>
                     })}
                 </div>
             );
