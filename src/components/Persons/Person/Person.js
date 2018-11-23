@@ -6,6 +6,8 @@ import cssClasses from './Person.css';
 import Aux from '../../../hoc/Aux';
 import withClassNew from '../../../hoc/withClassNew';
 
+import { AuthContext } from '../../../containers/App';
+
 class Person extends Component {
 
     constructor(props) {
@@ -20,7 +22,7 @@ class Person extends Component {
         }
     }
 
-    focus(){
+    focus() {
         this.inputElement.current.focus();
     }
 
@@ -28,7 +30,9 @@ class Person extends Component {
         return (
             // <WithClass classes={cssClasses.Person}>
             <Aux>
-                { this.props.authenticated ? <p>I'm authenticated!</p> : null }
+                <AuthContext.Consumer>
+                    {auth => auth ? <p>I'm authenticated!</p> : null}
+                </AuthContext.Consumer>
                 <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
                 <p>{this.props.children}</p>
                 <input
