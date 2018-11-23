@@ -5,6 +5,21 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        console.log('[App.js] Insider Constructor', props);
+        // another way to initialize the state
+        // this.state = {......}
+    }
+    
+    componentWillMount(){
+        console.log('[App.js] Insider componentWillMount');
+    }
+
+    componentDidMount(){
+        console.log('[App.js] Insider componentDidMount');
+    }
+
     state = {
         persons: [
             { id: 'personid1', name: 'Max', age: 28 },
@@ -61,15 +76,16 @@ class App extends Component {
     }
 
     render() {
+        console.log('[App.js] Insider render');
         let persons = null;
 
         if (this.state.showPersons) {
             persons = (
-                    <Persons
-                        persons={this.state.persons}
-                        clicked={this.deletePersonHandler}
-                        changed={this.nameChangedHandler}
-                    />
+                <Persons
+                    persons={this.state.persons}
+                    clicked={this.deletePersonHandler}
+                    changed={this.nameChangedHandler}
+                />
             );
         }
 
