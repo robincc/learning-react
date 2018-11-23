@@ -10,6 +10,13 @@ const person = (props) => {
         </div>
     )
 
+    // another way: returing array of elements
+    // return [
+    //     <p key="1" onClick={props.click}>I'm {props.name} and I am {props.age} years old!</p>,
+    //     <p key="2">{props.children}</p>,
+    //     <input key="3" type="text" onChange={props.changed} value={props.name} />
+    // ]
+
 };
 
 export default person;

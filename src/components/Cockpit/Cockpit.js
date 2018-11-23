@@ -4,10 +4,10 @@ import cssClasses from './Cockpit.css';
 
 const cockpit = (props) => {
     const classes = [];
-    let btnClass = '';
+    let btnClass = cssClasses.Button;
 
     if (props.showPersons) {
-        btnClass = cssClasses.Red;
+        btnClass = [cssClasses.Red, cssClasses.Button].join(' ');
     }
 
     if (props.persons.length <= 2) {
@@ -18,7 +18,7 @@ const cockpit = (props) => {
     }
 
     return (
-        <div className={cssClasses.Cockpit}>
+        <div>
             <h1>{props.appTitle}</h1>
             <p className={classes.join(' ')}>This is really working! </p>
             <button
