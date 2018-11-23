@@ -11,13 +11,26 @@ class App extends Component {
         // another way to initialize the state
         // this.state = {......}
     }
-    
-    componentWillMount(){
+
+    componentWillMount() {
         console.log('[App.js] Insider componentWillMount');
     }
 
-    componentDidMount(){
+    componentDidMount() {
         console.log('[App.js] Insider componentDidMount');
+    }
+
+    shouldComponentUpdate(nextProps, nextState ) {
+        console.log('[UPDATE App.js] Inside shouldComponentUpdate', nextProps, nextState);
+        return true;
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        console.log('[UPDATE App.js] Inside componentWillUpdate', nextProps, nextState);
+    }
+
+    componentDidUpdate() {
+        console.log('[UPDATE App.js] Inside componentDidUpdate');
     }
 
     state = {
