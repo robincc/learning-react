@@ -8,18 +8,35 @@ class Persons extends Component {
         // another way to initialize the state
         // this.state = {......}
     }
-    
-    componentWillMount(){
+
+    componentWillMount() {
         console.log('[Persons.js] Insider componentWillMount');
     }
 
-    componentDidMount(){
+    componentDidMount() {
         console.log('[Persons.js] Insider componentDidMount');
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('[UPDATE Persons.js] Inside componentWillReceiveProps', nextProps);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('[UPDATE Persons.js] Inside shouldComponentUpdate', nextProps, nextState);
+        return nextProps.persons !== this.props.persons;
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        console.log('[UPDATE Persons.js] Inside componentWillUpdate', nextProps, nextState);
+    }
+
+    componentDidUpdate() {
+        console.log('[UPDATE Persons.js] Inside componentDidUpdate');
     }
 
     render() {
         console.log('[Persons.js] Insider render');
-        
+
         return this.props.persons.map((person, index) => {
             return <Person
                 key={person.id}
