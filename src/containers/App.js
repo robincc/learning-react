@@ -14,7 +14,8 @@ class App extends Component {
             { id: 'personid3', name: 'Stephanie', age: 26 }
         ],
         otherState: 'some other value',
-        showPersons: false
+        showPersons: false,
+        toggleClicked: 0
     };
 
     switchNameHandler = (newName) => {
@@ -59,7 +60,19 @@ class App extends Component {
     }
 
     togglePersonsHandler = () => {
-        this.setState({ showPersons: !this.state.showPersons });
+        // incorrect way to setState.. this.state.showPersons might not be correct... racing condition
+        // this.setState({
+        //     showPersons: !this.state.showPersons,
+        //     toggleClicked: this.state.toggleClicked + 1
+        // });
+
+        // correct way to setState
+        this.setState((prevState, props) => {
+            return {
+                showPersons: !prevState.showPersons,
+                toggleClicked: prevState.toggleClicked + 1
+            }
+        });
     }
 
     render() {
