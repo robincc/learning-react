@@ -9,7 +9,7 @@ import withClassNew from '../hoc/withClassNew';
 class App extends Component {
     state = {
         persons: [
-            { id: 'personid1', name: 'Max', age: "28" },
+            { id: 'personid1', name: 'Max', age: 28 },
             { id: 'personid2', name: 'Manu', age: 29 },
             { id: 'personid3', name: 'Stephanie', age: 26 }
         ],
