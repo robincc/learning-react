@@ -82,6 +82,25 @@ class App extends Component {
         this.setState({ authenticated: true });
     }
 
+
+    // componentWillMount(){}
+    // componentWillUpdate(){}
+    // componentWillReceiveProps(){}
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        console.log('[UPDATE App.js] Inside getDerivedStateFromProps', nextProps, prevState);
+        return prevState;
+    }
+
+    getSnapshotBeforeUpdate() {
+        console.log('[UPDATE App.js] Inside getSnapshotBeforeUpdate');
+        return null;
+    }
+    
+    componentDidUpdate() {
+        console.log('[UPDATE App.js] Inside componentDidUpdate');
+    }
+
     render() {
         let persons = null;
 
@@ -91,7 +110,7 @@ class App extends Component {
                     persons={this.state.persons}
                     clicked={this.deletePersonHandler}
                     changed={this.nameChangedHandler}
-                    // isAuthenticated={this.state.authenticated}
+                // isAuthenticated={this.state.authenticated}
                 />
             );
         }
